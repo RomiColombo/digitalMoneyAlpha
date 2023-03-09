@@ -1,0 +1,29 @@
+#--------------- Configuration Docker ----------------------#
+
+# Spring configuration
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            tokenUri: http://${KEYCLOAK_HOST}:8080/realms/digitalMoneyHouse/protocol/openid-connect/token
+      resource-server:
+        jwt:
+          issuerUri: http://${KEYCLOAK_FRONT_HOST}:8080/realms/digitalMoneyHouse
+          jwkSetUri: http://${KEYCLOAK_HOST}:8080/realms/digitalMoneyHouse/protocol/openid-connect/certs
+  kafka:
+    bootstrap-servers: broker:9092
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka
+
+# Feign configuration
+feign:
+  accounts:
+    url: http://accounts:8091
+  transactions:
+    url: http://transactions:8093
+    

@@ -1,0 +1,6 @@
+#--------------- Configuration Test ----------------------#
+
+# Spring configuration
+eureka:
+  client:
+    enabled: false

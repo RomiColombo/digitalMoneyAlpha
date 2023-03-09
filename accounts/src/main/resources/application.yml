@@ -1,0 +1,35 @@
+#--------------- Configuration Local ----------------------#
+
+# Server configuration
+server:
+  port: 8091
+
+# Spring configuration
+spring:
+  application:
+    name: ms-accounts
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuerUri: http://keycloak:8080/realms/digitalMoneyHouse
+          jwkSetUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/certs
+  data:
+    mongodb:
+      uri: mongodb://localhost:27018
+      database: accounts
+
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+logging:
+  level:
+    org:
+      springframework:
+        transaction: DEBUG
+        orm:
+          jpa: DEBUG
+        data:
+          mongodb: DEBUG

@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "99ef5ad2-7b0c-42c7-98f7-f0a4a593a072",
+		"name": "DigitalMoneyHouse 11/11",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.be.success;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "dev@test.com",
+									"type": "default"
+								},
+								{
+									"key": "firstname",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "lastname",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "dni",
+									"value": "123456789",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/035c3080-6cd5-449d-bcd6-42f49838fd0d",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"035c3080-6cd5-449d-bcd6-42f49838fd0d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user transfers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transfers/50378160-1b69-4bec-9a8c-127164f318f9",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"transfers",
+								"50378160-1b69-4bec-9a8c-127164f318f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/logout",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "nuevo-developer@test.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "firstname",
+									"value": "test7",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "nuevo.test12",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dni",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "43218976434",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "test7@test.com",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/035c3080-6cd5-449d-bcd6-42f49838fd0d",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"035c3080-6cd5-449d-bcd6-42f49838fd0d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/035c3080-6cd5-449d-bcd6-42f49838fd0d",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"035c3080-6cd5-449d-bcd6-42f49838fd0d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Get accounts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.be.success;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "dev@test.com",
+									"type": "default"
+								},
+								{
+									"key": "firstname",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "lastname",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "dni",
+									"value": "123456789",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/636d9cc7c073f97e48569b94",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"636d9cc7c073f97e48569b94"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get accounts by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/user/035c3080-6cd5-449d-bcd6-42f49838fd0d",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"user",
+								"035c3080-6cd5-449d-bcd6-42f49838fd0d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update alias",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "esto.es.prueba",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/636d9cc7c073f97e48569b94",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"636d9cc7c073f97e48569b94"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "035c3080-6cd5-449d-bcd6-42f49838fd0d",
+									"type": "default"
+								},
+								{
+									"key": "type",
+									"value": "CA",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/636da0abc073f97e48569b95",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"636da0abc073f97e48569b95"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Get cards By User id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/cards/getAll/636d957a296ec2371aac88a2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"cards",
+								"getAll",
+								"636d957a296ec2371aac88a2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{  \n    \"accountId\":\"636d9cc7c073f97e48569b94\",\n    \"code\": 123,\n    \"cardNumber\": 4234564289012325,\n    \"expirationDate\": \"10/24\",\n    \"fullName\": \"Cosme Fulanito\",\n    \"userId\":\"035c3080-6cd5-449d-bcd6-42f49838fd0d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"cards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Create transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"type\": \"transfer\",      \n        \"user\": \"50378160-1b69-4bec-9a8c-127164f318f9\",\n        \"accountFrom\": \"636d957a296ec2371aac88a2\",\n        \"accountTo\": \"1234\",\n        \"amount\": 300.0,\n        \"description\": \"mi transaccion de prueba\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessTokenUrl",
+				"value": "http://{{kc-host}}:{{kc-port}}/realms/{{realm}}/protocol/openid-connect/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "http://{{kc-host}}:{{kc-port}}/realms/{{realm}}/protocol/openid-connect/auth",
+				"type": "string"
+			},
+			{
+				"key": "state",
+				"value": "77113acc-5b76-11ed-9b6a-0242ac120002",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{gw-secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{gw-client}}",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "http://{{host}}:{{gw-port}}/login/oauth2/code/gateway",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "openid",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost",
+			"type": "default"
+		},
+		{
+			"key": "kc-host",
+			"value": "keycloak",
+			"type": "default"
+		},
+		{
+			"key": "kc-port",
+			"value": "8080",
+			"type": "default"
+		},
+		{
+			"key": "realm",
+			"value": "digitalMoneyHouse",
+			"type": "default"
+		},
+		{
+			"key": "version",
+			"value": "v1",
+			"type": "default"
+		},
+		{
+			"key": "gw-port",
+			"value": "8081",
+			"type": "default"
+		},
+		{
+			"key": "gw-client",
+			"value": "gateway",
+			"type": "default"
+		},
+		{
+			"key": "gw-secret",
+			"value": "Wq17Q5I66wqedifVMqjHGlo9L9uRu5aZ",
+			"type": "default"
+		},
+		{
+			"key": "userId",
+			"value": "f391941d-bbcc-4ff3-b616-a24bbbea2009",
+			"type": "default"
+		},
+		{
+			"key": "accountId",
+			"value": "636d4fdd90c4294af26ed38c",
+			"type": "default"
+		}
+	]
+}

@@ -1,0 +1,66 @@
+#--------------- Configuration Local ----------------------#
+
+# Server configuration
+server:
+  port: 8082
+
+# Spring configuration
+spring:
+  application:
+    name: ms-middleware
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            clientId: ms-middleware
+            clientSecret: hEURh0AE2Y41zm2HXYK5ykxYdjXtbKT7
+            authorizationGrantType: client_credentials
+        provider:
+          keycloak:
+            tokenUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/token
+      resource-server:
+        jwt:
+          issuerUri: http://keycloak:8080/realms/digitalMoneyHouse
+          jwkSetUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/certs
+# Kafka configuration
+  kafka:
+    bootstrap-servers: localhost:9092
+
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+# Feign configuration
+feign:
+  accounts:
+    url: http://localhost:8091
+  transactions:
+    url: http://localhost:8093
+
+# Circuit breaker configuration
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - reactivefeign.client.ReactiveFeignException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+      ignoreExceptions:
+        - com.digitalAlpha.middleware.exception.BusinessException
+        - feign.FeignException$NotFound
+  instances:
+    ms-middleware:
+      failureRateThreshold: 50
+      slidingWindowType: TIME_BASED
+      slidingWindowSize: 10
+      waitDurationInOpenState: 15s
+      permittedNumberOfCallsInHalfOpenState: 3
+      registerHealthIndicator: true
+      allowHealthIndicatorToFail: false
+      automaticTransitionFromOpenToHalfOpenEnabled: true

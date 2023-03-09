@@ -1,0 +1,63 @@
+#--------------- Configuration Local ----------------------#
+
+# Server configuration
+server:
+  port: 8092
+
+# Spring configuration
+spring:
+  application:
+    name: ms-cards
+  data:
+    mongodb:
+      uri: mongodb://localhost:27018
+      database: cards
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            clientId: ms-cards
+            clientSecret: PbLtkqQK07iXAvpYbD8sTtZAA2WkTsfx
+            authorizationGrantType: client_credentials
+        provider:
+          keycloak:
+            tokenUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/token
+      resource-server:
+        jwt:
+          issuerUri: http://keycloak:8080/realms/digitalMoneyHouse
+          jwkSetUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/certs
+
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+# Feign configuration
+feign:
+  accounts:
+    url: http://localhost:8091
+
+# Circuit Breaker configuration
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - com.digitalAlpha.cards.exception.ServerErrorException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+      ignoreExceptions:
+        - com.digitalAlpha.cards.exception.BusinessException
+  instances:
+    ms-cards:
+      failureRateThreshold: 50
+      slidingWindowType: TIME_BASED
+      slidingWindowSize: 10
+      waitDurationInOpenState: 15s
+      permittedNumberOfCallsInHalfOpenState: 3
+      registerHealthIndicator: true
+      allowHealthIndicatorToFail: false
+      automaticTransitionFromOpenToHalfOpenEnabled: true

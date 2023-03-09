@@ -1,0 +1,3081 @@
+{
+	"info": {
+		"_postman_id": "8e9e82bd-f3e4-432b-94dd-cde86bb67a0d",
+		"name": "DigitalMoneyHouse",
+		"description": "StartFragment\n\nDocumentación de la API desarrollada por Alpha.\n\nDigital Money Alpha es una billetera virtual",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24423720"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.be.success;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "dev001@test.com",
+									"type": "default"
+								},
+								{
+									"key": "firstname",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "lastname",
+									"value": "test",
+									"type": "default"
+								},
+								{
+									"key": "dni",
+									"value": "123456789",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create user - 400 BAD REQ",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "dev@test.com",
+											"type": "default"
+										},
+										{
+											"key": "firstname",
+											"value": "test",
+											"type": "default"
+										},
+										{
+											"key": "lastname",
+											"value": "test",
+											"type": "default"
+										},
+										{
+											"key": "dni",
+											"value": "123456789",
+											"type": "default"
+										},
+										{
+											"key": "phone",
+											"value": "12345678",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 20:02:12 GMT"
+								},
+								{
+									"key": "content-length",
+									"value": "43"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "Error: Ya existe un usuario con este correo"
+						},
+						{
+							"name": "Create user - 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "dev888@test.com",
+											"type": "default"
+										},
+										{
+											"key": "firstname",
+											"value": "test",
+											"type": "default"
+										},
+										{
+											"key": "lastname",
+											"value": "test",
+											"type": "default"
+										},
+										{
+											"key": "dni",
+											"value": "123456789",
+											"type": "default"
+										},
+										{
+											"key": "phone",
+											"value": "12345678",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "352"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstname\": \"test\",\n    \"lastname\": \"test\",\n    \"dni\": \"123456789\",\n    \"email\": \"dev888@test.com\",\n    \"phone\": \"12345678\",\n    \"accounts\": [\n        {\n            \"id\": \"6393e6ba881d5553116f7117\",\n            \"type\": \"CA\",\n            \"userId\": \"3c4580e7-2772-4123-b8b8-182548af19ae\",\n            \"account\": {\n                \"alias\": \"placerat.nulla.non\",\n                \"cvu\": \"7807959261050973000000\",\n                \"availableAmount\": 0,\n                \"currency\": \"ARS\"\n            },\n            \"valid\": true\n        }\n    ],\n    \"transactions\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get user by id - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/ed551874-20e4-45b0-ba58-a02ee5282ff8",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"users",
+										"ed551874-20e4-45b0-ba58-a02ee5282ff8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 20:11:45 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstname\": \"test\",\n    \"lastname\": \"test\",\n    \"dni\": \"123456789\",\n    \"email\": \"dev@test.com\",\n    \"phone\": \"12345678\",\n    \"accounts\": [\n        {\n            \"id\": \"6381204a1e92a975c3d61862\",\n            \"type\": \"CA\",\n            \"userId\": \"ed551874-20e4-45b0-ba58-a02ee5282ff8\",\n            \"account\": {\n                \"alias\": \"vel.consequat.interdum\",\n                \"cvu\": \"6908198827474020000000\",\n                \"availableAmount\": 0,\n                \"currency\": \"ARS\"\n            },\n            \"valid\": true\n        }\n    ],\n    \"transactions\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Modify User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "nuevo-developer@test.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "firstname",
+									"value": "test7",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "nuevo.test12",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dni",
+									"value": "12345678",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "43218976",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "test7@test.com",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modify User - 200",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "nuevo-developer@test.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "firstname",
+											"value": "test7",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lastname",
+											"value": "nuevo.test12",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "dni",
+											"value": "12345678",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "432189764",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "username",
+											"value": "test7@test.com",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/ed551874-20e4-45b0-ba58-a02ee5282ff8",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"users",
+										"ed551874-20e4-45b0-ba58-a02ee5282ff8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 20:26:26 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstname\": \"test\",\n    \"lastname\": \"test\",\n    \"dni\": \"123456789\",\n    \"email\": \"dev@test.com\",\n    \"phone\": \"432189764\",\n    \"accounts\": [\n        {\n            \"id\": \"6381204a1e92a975c3d61862\",\n            \"type\": \"CA\",\n            \"userId\": \"ed551874-20e4-45b0-ba58-a02ee5282ff8\",\n            \"account\": {\n                \"alias\": \"vel.consequat.interdum\",\n                \"cvu\": \"6908198827474020000000\",\n                \"availableAmount\": 0,\n                \"currency\": \"ARS\"\n            },\n            \"valid\": true\n        }\n    ],\n    \"transactions\": null\n}"
+						},
+						{
+							"name": "Modify User - 409 pass",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "dev@test.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "firstname",
+											"value": "test7",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lastname",
+											"value": "nuevo.test12",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "dni",
+											"value": "12345678",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "432189764",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "test7@test.com",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/ed551874-20e4-45b0-ba58-a02ee5282ff8",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"users",
+										"ed551874-20e4-45b0-ba58-a02ee5282ff8"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 20:27:12 GMT"
+								},
+								{
+									"key": "content-length",
+									"value": "87"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "The password was not modified. Please try Forgot My Password in Login, try again later."
+						},
+						{
+							"name": "Modify User - 409 dni",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "dev@test.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "firstname",
+											"value": "test7",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "lastname",
+											"value": "nuevo.test12",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "dni",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "432189764",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "username",
+											"value": "test7@test.com",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/ed551874-20e4-45b0-ba58-a02ee5282ff8",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"users",
+										"ed551874-20e4-45b0-ba58-a02ee5282ff8"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 20:27:32 GMT"
+								},
+								{
+									"key": "content-length",
+									"value": "57"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "Contact with your manager to modify dni, try again later."
+						}
+					]
+				},
+				{
+					"name": "Invalidate User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/logout",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout - 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/users/logout",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"users",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 19:50:13 GMT"
+								},
+								{
+									"key": "content-length",
+									"value": "0"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Get accounts by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/{{accountId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get accounts by Id - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/{{accountId}}",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts",
+										"{{accountId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "216"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"636d4fd3ada9225dc7b74806\",\n    \"type\": \"CA\",\n    \"userId\": \"7d127a51-3d8e-4208-a06f-38ec2dd738c9\",\n    \"valid\": true,\n    \"account\": {\n        \"alias\": \"un.alias.random\",\n        \"cvu\": \"3570783415438834000000\",\n        \"availableAmount\": 5300,\n        \"currency\": null\n    }\n}"
+						},
+						{
+							"name": "Get accounts by Id - 400",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/636d4fd3ada9225dc7b7484566",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts",
+										"636d4fd3ada9225dc7b7484566"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "147"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"status\": \"NOT_FOUND\",\n    \"message\": \"Not Found: id 636d4fd3ada9225dc7b7484566 doesn't exists\",\n    \"path\": \"/accounts/636d4fd3ada9225dc7b7484566\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get accounts by user id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/user/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get accounts by user id - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/user/{{userId}}",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts",
+										"user",
+										"{{userId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"636d4fd3ada9225dc7b74806\",\n        \"type\": \"CA\",\n        \"userId\": \"7d127a51-3d8e-4208-a06f-38ec2dd738c9\",\n        \"valid\": true,\n        \"account\": {\n            \"alias\": \"un.alias.random\",\n            \"cvu\": \"3570783415438834000000\",\n            \"availableAmount\": 5300,\n            \"currency\": null\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update alias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "el.martes.ganamos",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/{{accountId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update alias - 400",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "esto.es.pruebaa",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/636d9cc7c073f97e48569b94",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts",
+										"636d9cc7c073f97e48569b94"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "156"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Bad field: can't update account with id 636d9cc7c073f97e48569b94\",\n    \"path\": \"/accounts/636d9cc7c073f97e48569b94\"\n}"
+						},
+						{
+							"name": "Update alias - 200",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "esto.es.pruebaa",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/636d4fd3ada9225dc7b74806",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts",
+										"636d4fd3ada9225dc7b74806"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "216"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"636d4fd3ada9225dc7b74806\",\n    \"type\": \"CA\",\n    \"userId\": \"7d127a51-3d8e-4208-a06f-38ec2dd738c9\",\n    \"valid\": true,\n    \"account\": {\n        \"alias\": \"esto.es.pruebaa\",\n        \"cvu\": \"3570783415438834000000\",\n        \"availableAmount\": 5300,\n        \"currency\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "{{userId}}",
+									"type": "default"
+								},
+								{
+									"key": "type",
+									"value": "CC",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Account - 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "{{userId}}",
+											"type": "default"
+										},
+										{
+											"key": "type",
+											"value": "CA",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "100"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Already Exist: account of type ca\",\n    \"path\": \"/accounts\"\n}"
+						},
+						{
+							"name": "Create Account - 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "userId",
+											"value": "{{userId}}",
+											"type": "default"
+										},
+										{
+											"key": "type",
+											"value": "CC",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "219"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"638128d11e92a975c3d61863\",\n    \"type\": \"CC\",\n    \"userId\": \"7d127a51-3d8e-4208-a06f-38ec2dd738c9\",\n    \"valid\": true,\n    \"account\": {\n        \"alias\": \"platea.ultrices.magnis\",\n        \"cvu\": \"38584262652353590000\",\n        \"availableAmount\": 0,\n        \"currency\": \"ARS\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Invalidate Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/{{accountId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"accounts",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalidate Account - 403",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/accounts/638128d11e92a975c3d61863",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"accounts",
+										"638128d11e92a975c3d61863"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1 ; mode=block"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "content-length",
+									"value": "103"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"status\": \"FORBIDDEN\",\n    \"message\": \"Access denied\",\n    \"path\": \"/accounts/638128d11e92a975c3d61863\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Create card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{  \n    \"accountId\":\"{{accountId}}\",\n    \"code\": 550,\n    \"cardNumber\": \"{{cardNumber}}\",\n    \"expirationDate\": \"11/23\",\n    \"fullName\": \"Arlette Cossom\",\n    \"userId\":\"{{userId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create card - 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n{  \n    \"accountId\":\"{{accountId}}\",\n    \"code\": 123,\n    \"cardNumber\": 423456789012326,\n    \"expirationDate\": \"10/24\",\n    \"fullName\": \"Cosme Fulanito\",\n    \"userId\":\"{{userId}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"cards"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 20:52:16 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"63812aff52772475aa8471fb\",\n    \"accountId\": \"636d4fd3ada9225dc7b74806\",\n    \"code\": 123,\n    \"cardNumber\": 423456789012326,\n    \"expirationDate\": \"10/24\",\n    \"fullName\": \"Cosme Fulanito\",\n    \"companyName\": \"American Express\",\n    \"userId\": \"7d127a51-3d8e-4208-a06f-38ec2dd738c9\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get cards By account id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards/getAll/{{accountId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"cards",
+								"getAll",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get cards By account id - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards/getAll/{{accountId}}",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"cards",
+										"getAll",
+										"{{accountId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 21:17:41 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"6376a015afa121522de84c4e\",\n        \"accountId\": \"636d4fd3ada9225dc7b74806\",\n        \"cardNumber\": 443870677612268,\n        \"expirationDate\": \"11/23\",\n        \"fullName\": \"Chrotoem Jeffrey\",\n        \"companyName\": \"American Express\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get card by card number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI5SHBEdDk1VXUxT05fYzJYNXFjZ1hSZnkxYXk3bElpMXJ2aVFXbTlCM1JFIn0.eyJleHAiOjE2NjkyMjQzNDYsImlhdCI6MTY2OTIyNDA0NiwiYXV0aF90aW1lIjoxNjY5MjIyMjkxLCJqdGkiOiJlM2ZmZThmYy1jMjBmLTRiZTQtOGFmNC00YmYyNzUyMWU5NjgiLCJpc3MiOiJodHRwOi8va2V5Y2xvYWs6ODA4MC9yZWFsbXMvZGlnaXRhbE1vbmV5SG91c2UiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZDJmYjViZDYtMmM4My00NjNlLTliODMtZmY3OGI0OTI3ZDg4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZ2F0ZXdheSIsInNlc3Npb25fc3RhdGUiOiI1ZWRjMTEzZC01ZWUyLTQ0MWEtODZlZS1kZjUzZDZlNmZkNWMiLCJhY3IiOiIwIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1kaWdpdGFsbW9uZXlob3VzZSIsInVtYV9hdXRob3JpemF0aW9uIiwiQURNSU4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNWVkYzExM2QtNWVlMi00NDFhLTg2ZWUtZGY1M2Q2ZTZmZDVjIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJBZG1pbiBUZXN0IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJnaXZlbl9uYW1lIjoiQWRtaW4iLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6ImFkbWluQHRlc3QuY29tIn0.Pf-rWE14pcr8KREUf0IikK9Hamdo6a1Rn9XEzHJxHu59KoK6gRyXkNf0aLBOe1L4OAGGdHb2lD2tK_q-SKMAhd4oM6mEMHORPAaCFfIJ-aA_SEifm1uE7_ij7c-vbVV4mcBFqwbT85E0JJEN_sjdPM8HL1zj-_04aGnwL4PSNxjsM6A8zDBuMs9WCMT_6i09QGoTk7teF0itZPDK0GDs-tL_5RCwUgk-bPkzc9dPt6QuV4e3I5ddhFam8R9pkVp7AN9V0Ee_OsXXbNKLvbGSxWhMjQoTQ9ciI4oqnzRnuVyABa17c1tUYzMASCaZpAECPGQpgDpvbnudpayHl052dw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/cards/getCard/cardNumber/{{cardNumber}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"cards",
+								"getCard",
+								"cardNumber",
+								"{{cardNumber}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Status 200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI5SHBEdDk1VXUxT05fYzJYNXFjZ1hSZnkxYXk3bElpMXJ2aVFXbTlCM1JFIn0.eyJleHAiOjE2NjkyMjQzNDYsImlhdCI6MTY2OTIyNDA0NiwiYXV0aF90aW1lIjoxNjY5MjIyMjkxLCJqdGkiOiJlM2ZmZThmYy1jMjBmLTRiZTQtOGFmNC00YmYyNzUyMWU5NjgiLCJpc3MiOiJodHRwOi8va2V5Y2xvYWs6ODA4MC9yZWFsbXMvZGlnaXRhbE1vbmV5SG91c2UiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZDJmYjViZDYtMmM4My00NjNlLTliODMtZmY3OGI0OTI3ZDg4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZ2F0ZXdheSIsInNlc3Npb25fc3RhdGUiOiI1ZWRjMTEzZC01ZWUyLTQ0MWEtODZlZS1kZjUzZDZlNmZkNWMiLCJhY3IiOiIwIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1kaWdpdGFsbW9uZXlob3VzZSIsInVtYV9hdXRob3JpemF0aW9uIiwiQURNSU4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNWVkYzExM2QtNWVlMi00NDFhLTg2ZWUtZGY1M2Q2ZTZmZDVjIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJBZG1pbiBUZXN0IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJnaXZlbl9uYW1lIjoiQWRtaW4iLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6ImFkbWluQHRlc3QuY29tIn0.Pf-rWE14pcr8KREUf0IikK9Hamdo6a1Rn9XEzHJxHu59KoK6gRyXkNf0aLBOe1L4OAGGdHb2lD2tK_q-SKMAhd4oM6mEMHORPAaCFfIJ-aA_SEifm1uE7_ij7c-vbVV4mcBFqwbT85E0JJEN_sjdPM8HL1zj-_04aGnwL4PSNxjsM6A8zDBuMs9WCMT_6i09QGoTk7teF0itZPDK0GDs-tL_5RCwUgk-bPkzc9dPt6QuV4e3I5ddhFam8R9pkVp7AN9V0Ee_OsXXbNKLvbGSxWhMjQoTQ9ciI4oqnzRnuVyABa17c1tUYzMASCaZpAECPGQpgDpvbnudpayHl052dw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8092/cards/getCard/cardNumber/423456789012389",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8092",
+									"path": [
+										"cards",
+										"getCard",
+										"cardNumber",
+										"423456789012389"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Set-Cookie",
+									"value": "JSESSIONID=9B0DB4F613881C7C71B903CDABB5B567; Path=/; HttpOnly"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 17:26:00 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"6376a015afa121522de84c4e\",\n    \"accountId\": \"636d4fd3ada9225dc7b74806\",\n    \"code\": 851,\n    \"cardNumber\": 423456789012389,\n    \"expirationDate\": \"11/23\",\n    \"fullName\": \"Chrotoem Jeffrey\",\n    \"companyName\": \"American Express\",\n    \"userId\": \"d2fb5bd6-2c83-463e-9b83-ff78b4927d88\"\n}"
+						},
+						{
+							"name": "Status 500 invalidCard",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI5SHBEdDk1VXUxT05fYzJYNXFjZ1hSZnkxYXk3bElpMXJ2aVFXbTlCM1JFIn0.eyJleHAiOjE2NjkyMjQzNDYsImlhdCI6MTY2OTIyNDA0NiwiYXV0aF90aW1lIjoxNjY5MjIyMjkxLCJqdGkiOiJlM2ZmZThmYy1jMjBmLTRiZTQtOGFmNC00YmYyNzUyMWU5NjgiLCJpc3MiOiJodHRwOi8va2V5Y2xvYWs6ODA4MC9yZWFsbXMvZGlnaXRhbE1vbmV5SG91c2UiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZDJmYjViZDYtMmM4My00NjNlLTliODMtZmY3OGI0OTI3ZDg4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZ2F0ZXdheSIsInNlc3Npb25fc3RhdGUiOiI1ZWRjMTEzZC01ZWUyLTQ0MWEtODZlZS1kZjUzZDZlNmZkNWMiLCJhY3IiOiIwIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiZGVmYXVsdC1yb2xlcy1kaWdpdGFsbW9uZXlob3VzZSIsInVtYV9hdXRob3JpemF0aW9uIiwiQURNSU4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNWVkYzExM2QtNWVlMi00NDFhLTg2ZWUtZGY1M2Q2ZTZmZDVjIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJBZG1pbiBUZXN0IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW5AdGVzdC5jb20iLCJnaXZlbl9uYW1lIjoiQWRtaW4iLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJlbWFpbCI6ImFkbWluQHRlc3QuY29tIn0.Pf-rWE14pcr8KREUf0IikK9Hamdo6a1Rn9XEzHJxHu59KoK6gRyXkNf0aLBOe1L4OAGGdHb2lD2tK_q-SKMAhd4oM6mEMHORPAaCFfIJ-aA_SEifm1uE7_ij7c-vbVV4mcBFqwbT85E0JJEN_sjdPM8HL1zj-_04aGnwL4PSNxjsM6A8zDBuMs9WCMT_6i09QGoTk7teF0itZPDK0GDs-tL_5RCwUgk-bPkzc9dPt6QuV4e3I5ddhFam8R9pkVp7AN9V0Ee_OsXXbNKLvbGSxWhMjQoTQ9ciI4oqnzRnuVyABa17c1tUYzMASCaZpAECPGQpgDpvbnudpayHl052dw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8092/cards/getCard/cardNumber/423456789012321",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8092",
+									"path": [
+										"cards",
+										"getCard",
+										"cardNumber",
+										"423456789012321"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Set-Cookie",
+									"value": "JSESSIONID=B4A01695BF072398DFFFA440A7ED2BB7; Path=/; HttpOnly"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Nov 2022 17:28:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 500,\n    \"status\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"Cannot invoke \\\"com.digitalAlpha.cards.model.Card.getAccountId()\\\" because \\\"card\\\" is null\",\n    \"path\": \"/cards/getCard/cardNumber/423456789012321\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards/{{cardId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"cards",
+								"{{cardId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete card - 200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards/{{cardId}}",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"cards",
+										"{{cardId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 21:11:09 GMT"
+								},
+								{
+									"key": "content-length",
+									"value": "0"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Delete card - 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/cards/{{cardId}}",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"cards",
+										"{{cardId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 21:11:47 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 404,\n    \"status\": \"NOT_FOUND\",\n    \"message\": \"Not Found: Could not find this card\",\n    \"path\": \"/cards/63812aff52772475aa8471fb\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Create transaction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"IN\",\r\n    \"userId\": \"{{userId}}\",\r\n    \"accountFrom\": \"1806877511785599500000\",\r\n    \"accountTo\": {\r\n        \"cvu\": \"2878006619688499000000\"\r\n    },\r\n    \"amount\": 10.0,\r\n    \"description\": \"descripcion optativa\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create transaction - 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"IN\",\r\n    \"userId\": \"{{userId}}\",\r\n    \"accountFrom\": \"CVU_ORIGEN\",\r\n    \"accountTo\": \"CVU_DESTINO\",\r\n    \"amount\": 1000,\r\n    \"description\": \"descripcion optativa\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"transactions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 21:12:20 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"IN\",\n    \"userId\": \"7d127a51-3d8e-4208-a06f-38ec2dd738c9\",\n    \"accountFrom\": \"CVU_ORIGEN\",\n    \"accountTo\": \"CVU_DESTINO\",\n    \"amount\": 1000,\n    \"description\": \"descripcion optativa\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create deposit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 100.0,\r\n    \"cardNumber\": {{cardNumber}},\r\n    \"accountId\":\"{{accountId}}\",\r\n    \"userId\": \"{{userId}}\"\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/deposit",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"transactions",
+								"deposit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create deposit - 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\": 100.0,\r\n    \"cardNumber\": 443870677612268,\r\n    \"accountId\":\"636d4fd3ada9225dc7b74806\"\r\n} ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/deposit",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"transactions",
+										"deposit"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 01:06:08 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"638014f7ecb4404931f665b7\",\n    \"type\": \"DEPOSIT\",\n    \"userId\": \"d2fb5bd6-2c83-463e-9b83-ff78b4927d88\",\n    \"time\": \"2022-11-25T01:05:59.531\",\n    \"status\": \"APPROVED\",\n    \"accountFrom\": null,\n    \"accountTo\": \"636d4fd3ada9225dc7b74806\",\n    \"amount\": 100,\n    \"description\": null,\n    \"fee\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by user id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/users/{{userId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"transactions",
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by user id - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/users/{{userId}}/5",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"transactions",
+										"users",
+										"{{userId}}",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 21:12:37 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"type\": \"IN\",\n        \"userId\": \"7d127a51-3d8e-4208-a06f-38ec2dd738c9\",\n        \"accountFrom\": \"CVU_ORIGEN\",\n        \"accountTo\": \"CVU_DESTINO\",\n        \"amount\": 1000,\n        \"description\": \"descripcion optativa\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/{{transactionId}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"transactions",
+								"{{transactionId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by id - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/63780f7cd008ca2b6c650b3e",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"transactions",
+										"63780f7cd008ca2b6c650b3e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 21:15:50 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"IN\",\n    \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n    \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n    \"accountTo\": \"63777cd538b9e856f995ee18\",\n    \"amount\": 200,\n    \"description\": \"un test\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by Filters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\r\n    \"amountMin\": 0.0,\r\n    \"amountMax\": 300.0,\r\n    \"dateMin\": \"2022-11-18T23:00:00\",\r\n    \"dateMax\": \"2022-11-19T23:18:26\",\r\n    \"type\": \"IN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/users/filters",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{gw-port}}",
+							"path": [
+								"api",
+								"{{version}}",
+								"transactions",
+								"users",
+								"filters"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get by Filters  - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\r\n    \"amountMin\": 0.0,\r\n    \"amountMax\": 300.0,\r\n    \"dateMin\": \"2022-11-18T23:00:00\",\r\n    \"dateMax\": \"2022-11-19T23:18:26\",\r\n    \"type\": \"IN\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{host}}:{{gw-port}}/api/{{version}}/transactions/users/filters",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{gw-port}}",
+									"path": [
+										"api",
+										"{{version}}",
+										"transactions",
+										"users",
+										"filters"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Nov 2022 01:05:25 GMT"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    },\n    {\n        \"type\": \"IN\",\n        \"userId\": \"920e745e-913e-4520-a221-2f99b4736d83\",\n        \"accountFrom\": \"636d4fd3ada9225dc7b74806\",\n        \"accountTo\": \"63777cd538b9e856f995ee18\",\n        \"amount\": 200,\n        \"description\": \"un test\"\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "useBrowser",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "http://{{kc-host}}:{{kc-port}}/realms/{{realm}}/protocol/openid-connect/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "http://{{kc-host}}:{{kc-port}}/realms/{{realm}}/protocol/openid-connect/auth",
+				"type": "string"
+			},
+			{
+				"key": "state",
+				"value": "77113acc-5b76-11ed-9b6a-0242ac120002",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{gw-secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{gw-client}}",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "http://{{host}}:{{gw-port}}/login/oauth2/code/gateway",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "openid",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "ec2-3-23-230-250.us-east-2.compute.amazonaws.com",
+			"type": "default"
+		},
+		{
+			"key": "kc-host",
+			"value": "ec2-3-23-230-250.us-east-2.compute.amazonaws.com",
+			"type": "default"
+		},
+		{
+			"key": "kc-port",
+			"value": "8080",
+			"type": "default"
+		},
+		{
+			"key": "realm",
+			"value": "digitalMoneyHouse",
+			"type": "default"
+		},
+		{
+			"key": "version",
+			"value": "v1",
+			"type": "default"
+		},
+		{
+			"key": "gw-port",
+			"value": "8081",
+			"type": "default"
+		},
+		{
+			"key": "gw-client",
+			"value": "gateway",
+			"type": "default"
+		},
+		{
+			"key": "gw-secret",
+			"value": "Wq17Q5I66wqedifVMqjHGlo9L9uRu5aZ",
+			"type": "default"
+		},
+		{
+			"key": "userId",
+			"value": "7d127a51-3d8e-4208-a06f-38ec2dd738c9",
+			"type": "default"
+		},
+		{
+			"key": "accountId",
+			"value": "636d4fdd90c4294af26ed38c",
+			"type": "default"
+		},
+		{
+			"key": "transactionId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "cardId",
+			"value": "63812aff52772475aa8471fb",
+			"type": "string"
+		},
+		{
+			"key": "cardNumber",
+			"value": "423456789012326",
+			"type": "string"
+		}
+	]
+}

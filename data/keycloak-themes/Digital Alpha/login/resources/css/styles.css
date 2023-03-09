@@ -1,0 +1,275 @@
+* {
+    font-family: 'Montserrat';
+}
+
+.body-container {
+    background-color: #32353C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 98vh;
+}
+
+#kc-header-wrapper {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#kc-header-wrapper img{
+    width: 60%;
+    margin: auto;
+}
+
+.login-container {
+    display: flex;
+    width: 90%;
+    padding-bottom: 30px;
+    max-width: 500px;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2325278a;
+    box-shadow: 13px 16px 24px 0px rgba(0, 0, 0, 0.26);
+    border-radius: 20px;
+}
+
+#kc-page-header-container h1{
+    color: #cced00;
+    margin-bottom: 0;
+}
+
+#kc-page-header-container {
+    text-align: center;
+}
+
+#kc-page-header-container p, .alert-warning {
+    font-size: 20px;
+    font-weight: 200;
+    color: #777775b2;
+    margin-top: 10px;
+}
+
+.login-form-container {
+    width: 100%;
+}
+
+#kc-content{
+    margin: 20px 40px 20px 40px;
+}
+
+.login-form-group {
+    height: 30px;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.login-group-two {
+    margin-bottom: 30px;
+}
+
+.login-form-group #input-error {
+    color: #e9e9e9;
+    background-color: #fffb0030;
+    width: 100%;
+    display: block;
+    margin-top: 2px;
+    text-indent: 6px;
+    padding: 4px 0;
+}
+
+.login-form-group label {
+    position: absolute;
+    color: #5d5d5e;
+    top: 5px;
+    transition: all 0.5s ease;
+}
+
+.login-form-group input {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    border-bottom: solid 1px #cded0083;
+    font-size: 18px;
+    color: white;
+    padding: 0;
+}
+#kc-form-login {
+    padding-top: 40px;
+}
+
+.login-form-group input:focus {
+    outline: none;
+    border-bottom: solid 2px #cced00;
+}
+
+.login-form-group .label-active {
+    top: -20px;
+    color: white;
+}
+
+.login-form-options {
+    margin-bottom: 0;
+    height: 60px;
+}
+
+#kc-form-options .checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+#kc-form-options input {
+    align-content: center;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+}
+
+#kc-form-options label {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    font-weight: 100;
+    color: #cded00;
+    height: 100%;
+}
+
+.login-form-options-wrapper {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-form-options-wrapper a {
+    color: #cced00;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.login-form-buttons input {
+    outline: none;
+    border: none;
+    background-color: #cded0063;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    color: white;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    height: 40px;
+}
+
+.login-form-buttons input:hover {
+    background-color: #cded00bf;
+}
+
+/*reset password */
+
+.reset-password-form {
+    margin-top: 60px;
+}
+
+.reset-password-form .login-form-group .reset-form-input {
+    height: 100%;
+}
+
+#kc-page-header-container{
+    color: #cced00;
+}
+
+#kc-info{
+    margin-top: 30px;
+    font-size: 12px;
+    color: #e8e8e88f;
+    text-align: center;
+}
+
+.reset-password-form-settings {
+    height: 100px;
+}
+
+.reset-password-form-back {
+    margin-bottom: 20px;
+}
+
+.alert-success span {
+    color: #e8e8e88f;
+    text-align: center;
+    display: block;
+}
+
+.reset-password-form-submit-btn input, #kc-form-buttons input  {
+    outline: none;
+    border: none;
+    background-color: #cded0063;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    color: white;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    height: 40px;
+}
+
+.instruction {
+    text-align: center;
+    color: white;
+}
+
+#instruction1 {
+    color: white;
+    line-height: 30px;
+}
+
+#instruction1 a {
+    color: #cced00;
+    text-decoration: none;
+}
+
+.alert-warning span {
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    color: #e8e8e88f;
+}
+
+#kc-passwd-update-form {
+    margin-top: 60px;
+}
+
+.reset-form-input {
+    height: 100%;
+}
+
+.verify-email-container {
+    color: #fff;
+    text-align: center;
+}
+
+.verify-email-container a {
+    color: #cced00;
+    text-decoration: none;
+}
+
+.verify-email-container-message {
+    color: #cced00;
+    text-align: center;
+}
+
+.alert-text {
+    text-align: center;
+    color: #bbd02f;
+    display: block;
+}

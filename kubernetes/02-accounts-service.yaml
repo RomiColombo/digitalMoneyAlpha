@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-accounts
+  labels:
+    app: ms-accounts
+  namespace: proyecto-integrador
+spec:
+  type: ClusterIP
+  selector:
+    app: ms-accounts
+  ports:
+  - protocol: TCP
+    port: 8091
+    targetPort: 8091

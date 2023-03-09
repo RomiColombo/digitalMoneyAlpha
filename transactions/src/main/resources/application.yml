@@ -1,0 +1,87 @@
+#--------------- Local Docker ----------------------#
+
+# Server configuration
+server:
+  port: 8093
+
+# Spring configuration
+spring:
+  application:
+    name: ms-transactions
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            clientId: ms-transactions
+            clientSecret: ic7Rzz8ME47u6ST10nSegjIJ4hIoJujc
+            authorizationGrantType: client_credentials
+        provider:
+          keycloak:
+            tokenUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/token
+      resource-server:
+        jwt:
+          issuerUri: http://keycloak:8080/realms/digitalMoneyHouse
+          jwkSetUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/certs
+  data:
+    mongodb:
+      uri: mongodb://localhost:27018
+      database: transactions
+
+  # Kafka configuration
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  #External API conection
+  external:
+    service:
+      base-url: http://ec2-3-82-23-78.compute-1.amazonaws.com/cards
+
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+# Feign configuration
+feign:
+  cards:
+    url: http://localhost:8092
+  accounts:
+    url: http://localhost:8091
+
+# Circuit breaker configuration
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - com.digitalAlpha.transactions.exception.ServerErrorException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+      ignoreExceptions:
+        - com.digitalAlpha.transactions.exception.BusinessException
+  instances:
+    ms-transactions:
+      failureRateThreshold: 50
+      slidingWindowType: TIME_BASED
+      slidingWindowSize: 10
+      waitDurationInOpenState: 15s
+      permittedNumberOfCallsInHalfOpenState: 3
+      registerHealthIndicator: true
+      allowHealthIndicatorToFail: false
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+
+external:
+  api-key: 123
+
+logging:
+  level:
+    org:
+      springframework:
+        transaction: DEBUG
+        orm:
+          jpa: DEBUG
+        data:
+          mongodb: DEBUG

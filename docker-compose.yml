@@ -1,0 +1,202 @@
+version: '3.9'
+
+services:
+#----------- Keycloak --------------#
+  postgres:
+    container_name: keycloak-db
+    image: postgres:alpine3.16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    networks:
+      - da-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:19.0.3
+    restart: unless-stopped
+    command: start-dev --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_PASSWORD: admin
+      KC_DB_USERNAME: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_HOSTNAME: keycloak
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - da-network
+    volumes:
+      - ./data/keycloak-configuration:/opt/keycloak/data/import
+      - ./data/keycloak-themes:/opt/keycloak/themes
+#----------- database --------------#
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - "27018:27017"
+    networks:
+      - da-network
+    command: [ "mongod","--replSet","digitalAlphaReplicaSet", "--bind_ip_all"]
+    volumes:
+      - ./data/mongo-db:/scripts
+      - mongodb_data:/data/db
+#----------- microservices ------------#
+  accounts:
+    container_name: ms-accounts
+    build: ./accounts
+    environment:
+      KEYCLOAK_HOST: ${KEYCLOAK_HOST}
+      KEYCLOAK_FRONT_HOST: ${KEYCLOAK_FRONT_HOST}
+    ports:
+      - "8091:8091"
+    networks:
+      - da-network
+    depends_on:
+      - mongodb
+  cards:
+    container_name: ms-cards
+    build: ./cards
+    environment:
+      KEYCLOAK_HOST: ${KEYCLOAK_HOST}
+      KEYCLOAK_FRONT_HOST: ${KEYCLOAK_FRONT_HOST}
+    ports:
+      - "8092:8092"
+    networks:
+      - da-network
+    depends_on:
+      - mongodb
+  eureka:
+    container_name: ms-eureka
+    build: ./eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - da-network
+  gateway:
+    container_name: ms-gateway
+    restart: unless-stopped
+    build: ./gateway
+    environment:
+      KEYCLOAK_HOST: ${KEYCLOAK_HOST}
+      KEYCLOAK_FRONT_HOST: ${KEYCLOAK_FRONT_HOST}
+    ports:
+      - "8081:8081"
+    networks:
+      - da-network
+    depends_on:
+      - keycloak
+  transactions:
+    container_name: ms-transactions
+    build: ./transactions
+    environment:
+      KEYCLOAK_HOST: ${KEYCLOAK_HOST}
+      KEYCLOAK_FRONT_HOST: ${KEYCLOAK_FRONT_HOST}
+    ports:
+      - "8093:8093"
+    networks:
+      - da-network
+    depends_on:
+      - mongodb
+      - broker
+  resource-server:
+    container_name: ms-resource-server
+    build: ./users
+    environment:
+      KEYCLOAK_HOST: ${KEYCLOAK_HOST}
+      KEYCLOAK_FRONT_HOST: ${KEYCLOAK_FRONT_HOST}
+    ports:
+      - "8090:8090"
+    networks:
+      - da-network
+    depends_on:
+      - keycloak
+  middleware:
+    container_name: ms-middleware
+    build: ./middleware
+    environment:
+      KEYCLOAK_HOST: ${KEYCLOAK_HOST}
+      KEYCLOAK_FRONT_HOST: ${KEYCLOAK_FRONT_HOST}
+    ports:
+      - "8082:8082"
+    networks:
+      - da-network
+    depends_on:
+      - broker
+
+  #----------- kafka ------------#
+  zookeeper:
+    image: confluentinc/cp-zookeeper:6.1.1
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - da-network
+
+  broker:
+    image: confluentinc/cp-server:6.1.1
+    hostname: broker
+    container_name: broker
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "9101:9101"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_JMX_PORT: 9101
+      KAFKA_JMX_HOSTNAME: localhost
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: broker:29092
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
+      CONFLUENT_METRICS_ENABLE: 'true'
+      CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
+    networks:
+      - da-network
+#  control-center:
+#    image: confluentinc/cp-enterprise-control-center:6.1.1
+#    hostname: control-center
+#    container_name: control-center
+#    depends_on:
+#      - broker
+#    ports:
+#      - "9021:9021"
+#    environment:
+#      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'broker:29092'
+#      CONTROL_CENTER_REPLICATION_FACTOR: 1
+#      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
+#      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+#      CONFLUENT_METRICS_TOPIC_REPLICATION: 1
+#      PORT: 9021
+#    networks:
+#      - da-network
+
+networks:
+  da-network:
+
+volumes:
+  postgres_data:
+  mongodb_data:

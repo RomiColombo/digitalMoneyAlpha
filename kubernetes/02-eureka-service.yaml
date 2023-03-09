@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: eureka
+  labels:
+    app: eureka
+  namespace: proyecto-integrador
+spec:
+  type: ClusterIP
+  selector:
+    app: eureka
+  ports:
+  - protocol: TCP
+    port: 8761
+    targetPort: 8761

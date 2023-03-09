@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-cards
+  labels:
+    app: ms-cards
+  namespace: proyecto-integrador
+spec:
+  type: ClusterIP
+  selector:
+    app: ms-cards
+  ports:
+  - protocol: TCP
+    port: 8093
+    targetPort: 8093

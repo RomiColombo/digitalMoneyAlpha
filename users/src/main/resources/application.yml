@@ -1,0 +1,70 @@
+#--------------- Configuration Local ----------------------#
+
+# Server configuration
+server:
+  port: 8090
+
+# Spring configuration
+spring:
+  application:
+    name: ms-user
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            clientId: resource-server
+            clientSecret: Ulm4HeOKDz1kPdrPJV04KSnGCnumPQSh
+            authorizationGrantType: client_credentials
+        provider:
+          keycloak:
+            tokenUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/token
+      resource-server:
+        jwt:
+          issuerUri: http://keycloak:8080/realms/digitalMoneyHouse
+          jwkSetUri: http://keycloak:8080/realms/digitalMoneyHouse/protocol/openid-connect/certs
+
+# Eureka configuration
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+# Keycloak configuration
+keycloak:
+  realm: digitalMoneyHouse
+  serverUrl: http://keycloak:8080
+  clientId: resource-server
+  clientSecret: Ulm4HeOKDz1kPdrPJV04KSnGCnumPQSh
+
+# Feign configuration
+feign:
+  accounts:
+    url: http://localhost:8091
+  transactions:
+    url: http://localhost:8093
+
+# Circuit breaker configuration
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - com.digitalAlpha.users.exception.ServerErrorException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+      ignoreExceptions:
+        - com.digitalAlpha.users.exception.BusinessException
+  instances:
+    ms-users:
+      failureRateThreshold: 50
+      slidingWindowType: TIME_BASED
+      slidingWindowSize: 10
+      waitDurationInOpenState: 15s
+      permittedNumberOfCallsInHalfOpenState: 3
+      registerHealthIndicator: true
+      allowHealthIndicatorToFail: false
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+

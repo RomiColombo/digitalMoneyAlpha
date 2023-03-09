@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-cards
+  labels:
+    app: ms-cards
+  namespace: proyecto-integrador
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-cards
+  template:
+    metadata:
+      name: ms-cards
+      labels:
+        app: ms-cards
+    spec:
+      containers:
+        - name: ms-cards
+          image: romicolombo/ms-cards:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8093

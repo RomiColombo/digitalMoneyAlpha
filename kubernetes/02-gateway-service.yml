@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-gateway
+  labels:
+    app: ms-gateway
+  namespace: proyecto-integrador
+spec:
+  type: ClusterIP
+  selector:
+    app: ms-gateway
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 8081
